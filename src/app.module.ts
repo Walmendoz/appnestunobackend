@@ -31,7 +31,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     TypeOrmModule.forRoot({
 
-      entities: [],
     'entities': [join(__dirname,'**', '*.entidad.{ts,js}')],
       synchronize: true,
     }),
