@@ -1,5 +1,5 @@
 {
-  "schemaVersion" :2
-  "templatedId": "node/22.15.0"
+  "schemaVersion": 2,
+  "templateId": "node/22.15.0"
 }
 
