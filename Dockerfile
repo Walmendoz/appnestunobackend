@@ -1,14 +1,14 @@
 
 # Usamos una imagen oficial de Node.js
-FROM node:18-alpine
+FROM node:20-alpine
 # Creamos el directorio de la app
-WORKDIR  /app
+WORKDIR  /usr/src/app
 # Copiamos los archivos necesarios
 COPY package*.json ./
 # Instalamos la dependencias 
-RUN npm install --only=production
+RUN npm install --production
 # Copiamos el resto del codigo
-COPY --from=builder /app/dist ./dist
+COPY . .
 # Compilamos la app
 RUN npx nest build
 #exponemos el puerto (el mismo de caprover)
