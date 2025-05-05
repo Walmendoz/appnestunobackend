@@ -12,7 +12,7 @@ COPY . .
 # Compilamos la app
 RUN npm run build
 #exponemos el puerto (el mismo de caprover)
-EXPOSE 3000
+EXPOSE 4005
 # Comando de Arranque
 CMD ["node", dist/main]
 
