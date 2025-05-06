@@ -17,20 +17,23 @@
 # CMD ["node", "dist/main.ts"]
 
 
-FROM node:20-alpine
+FROM node:21-alpine AS builder
 WORKDIR /app
-COPY . /app
-ENV HOST=194.140.199.108
-ENV USER=root
-ENV PASSWORD=Mendocitaa*
-ENV DATABASE=prayside
-ENV DB_PORT=3308
-ENV PORT=4005
+COPY package*.json ./
 
 RUN npm install
-
 COPY . .
+
+RUN npm run build
+
+FROM node:21-alpine
+WORKDIR /app
+
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist
+
+RUN npm install --only=production
 
 EXPOSE 4005
 
-CMD [ "node", "main" ]
+CMD [ "node", "dist/main.js" ]
