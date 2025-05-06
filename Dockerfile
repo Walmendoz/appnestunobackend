@@ -17,7 +17,7 @@
 # CMD ["node", "dist/main.ts"]
 
 
-FROM node:21-alpine AS builder
+FROM node:23-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 
@@ -26,7 +26,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:21-alpine
+FROM node:23-alpine
 WORKDIR /app
 
 COPY --from=builder /app/package*.json ./
