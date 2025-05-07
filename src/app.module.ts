@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 import { ResponsablesModule } from './responsables/responsables.module';
 import { DataSource } from 'typeorm';
 //import { RazasdegatosModule } from './razasdegatos/razasdegatos.module';
@@ -14,7 +16,7 @@ import { DataSource } from 'typeorm';
     database: 'pruebas',
     autoLoadEntities: true,
     synchronize: true,
-  }), ResponsablesModule],
+  }), ResponsablesModule, UsersModule, AuthModule],
   controllers: [],
   providers: [],
 })
